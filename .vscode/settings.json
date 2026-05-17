@@ -1,0 +1,8 @@
+{
+    "chat.tools.terminal.autoApprove": {
+        "/^dart analyze lib/features/cars/providers/car_detail_providers\\.dart$/": {
+            "approve": true,
+            "matchCommandLine": true
+        }
+    }
+}
