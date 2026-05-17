@@ -1,0 +1,1988 @@
+// GENERATED CODE - DO NOT MODIFY BY HAND
+
+part of 'app_database.dart';
+
+// ignore_for_file: type=lint
+class $ProfilesTable extends Profiles with TableInfo<$ProfilesTable, Profile> {
+  @override
+  final GeneratedDatabase attachedDatabase;
+  final String? _alias;
+  $ProfilesTable(this.attachedDatabase, [this._alias]);
+  static const VerificationMeta _idMeta = const VerificationMeta('id');
+  @override
+  late final GeneratedColumn<int> id = GeneratedColumn<int>(
+      'id', aliasedName, false,
+      hasAutoIncrement: true,
+      type: DriftSqlType.int,
+      requiredDuringInsert: false,
+      defaultConstraints:
+          GeneratedColumn.constraintIsAlways('PRIMARY KEY AUTOINCREMENT'));
+  static const VerificationMeta _nameMeta = const VerificationMeta('name');
+  @override
+  late final GeneratedColumn<String> name = GeneratedColumn<String>(
+      'name', aliasedName, false,
+      additionalChecks:
+          GeneratedColumn.checkTextLength(minTextLength: 1, maxTextLength: 120),
+      type: DriftSqlType.string,
+      requiredDuringInsert: true);
+  static const VerificationMeta _emailMeta = const VerificationMeta('email');
+  @override
+  late final GeneratedColumn<String> email = GeneratedColumn<String>(
+      'email', aliasedName, false,
+      additionalChecks:
+          GeneratedColumn.checkTextLength(minTextLength: 1, maxTextLength: 120),
+      type: DriftSqlType.string,
+      requiredDuringInsert: true);
+  static const VerificationMeta _phoneMeta = const VerificationMeta('phone');
+  @override
+  late final GeneratedColumn<String> phone = GeneratedColumn<String>(
+      'phone', aliasedName, false,
+      additionalChecks:
+          GeneratedColumn.checkTextLength(minTextLength: 1, maxTextLength: 40),
+      type: DriftSqlType.string,
+      requiredDuringInsert: true);
+  @override
+  List<GeneratedColumn> get $columns => [id, name, email, phone];
+  @override
+  String get aliasedName => _alias ?? actualTableName;
+  @override
+  String get actualTableName => $name;
+  static const String $name = 'profiles';
+  @override
+  VerificationContext validateIntegrity(Insertable<Profile> instance,
+      {bool isInserting = false}) {
+    final context = VerificationContext();
+    final data = instance.toColumns(true);
+    if (data.containsKey('id')) {
+      context.handle(_idMeta, id.isAcceptableOrUnknown(data['id']!, _idMeta));
+    }
+    if (data.containsKey('name')) {
+      context.handle(
+          _nameMeta, name.isAcceptableOrUnknown(data['name']!, _nameMeta));
+    } else if (isInserting) {
+      context.missing(_nameMeta);
+    }
+    if (data.containsKey('email')) {
+      context.handle(
+          _emailMeta, email.isAcceptableOrUnknown(data['email']!, _emailMeta));
+    } else if (isInserting) {
+      context.missing(_emailMeta);
+    }
+    if (data.containsKey('phone')) {
+      context.handle(
+          _phoneMeta, phone.isAcceptableOrUnknown(data['phone']!, _phoneMeta));
+    } else if (isInserting) {
+      context.missing(_phoneMeta);
+    }
+    return context;
+  }
+
+  @override
+  Set<GeneratedColumn> get $primaryKey => {id};
+  @override
+  Profile map(Map<String, dynamic> data, {String? tablePrefix}) {
+    final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
+    return Profile(
+      id: attachedDatabase.typeMapping
+          .read(DriftSqlType.int, data['${effectivePrefix}id'])!,
+      name: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}name'])!,
+      email: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}email'])!,
+      phone: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}phone'])!,
+    );
+  }
+
+  @override
+  $ProfilesTable createAlias(String alias) {
+    return $ProfilesTable(attachedDatabase, alias);
+  }
+}
+
+class Profile extends DataClass implements Insertable<Profile> {
+  final int id;
+  final String name;
+  final String email;
+  final String phone;
+  const Profile(
+      {required this.id,
+      required this.name,
+      required this.email,
+      required this.phone});
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    map['id'] = Variable<int>(id);
+    map['name'] = Variable<String>(name);
+    map['email'] = Variable<String>(email);
+    map['phone'] = Variable<String>(phone);
+    return map;
+  }
+
+  ProfilesCompanion toCompanion(bool nullToAbsent) {
+    return ProfilesCompanion(
+      id: Value(id),
+      name: Value(name),
+      email: Value(email),
+      phone: Value(phone),
+    );
+  }
+
+  factory Profile.fromJson(Map<String, dynamic> json,
+      {ValueSerializer? serializer}) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return Profile(
+      id: serializer.fromJson<int>(json['id']),
+      name: serializer.fromJson<String>(json['name']),
+      email: serializer.fromJson<String>(json['email']),
+      phone: serializer.fromJson<String>(json['phone']),
+    );
+  }
+  @override
+  Map<String, dynamic> toJson({ValueSerializer? serializer}) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return <String, dynamic>{
+      'id': serializer.toJson<int>(id),
+      'name': serializer.toJson<String>(name),
+      'email': serializer.toJson<String>(email),
+      'phone': serializer.toJson<String>(phone),
+    };
+  }
+
+  Profile copyWith({int? id, String? name, String? email, String? phone}) =>
+      Profile(
+        id: id ?? this.id,
+        name: name ?? this.name,
+        email: email ?? this.email,
+        phone: phone ?? this.phone,
+      );
+  Profile copyWithCompanion(ProfilesCompanion data) {
+    return Profile(
+      id: data.id.present ? data.id.value : this.id,
+      name: data.name.present ? data.name.value : this.name,
+      email: data.email.present ? data.email.value : this.email,
+      phone: data.phone.present ? data.phone.value : this.phone,
+    );
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('Profile(')
+          ..write('id: $id, ')
+          ..write('name: $name, ')
+          ..write('email: $email, ')
+          ..write('phone: $phone')
+          ..write(')'))
+        .toString();
+  }
+
+  @override
+  int get hashCode => Object.hash(id, name, email, phone);
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      (other is Profile &&
+          other.id == this.id &&
+          other.name == this.name &&
+          other.email == this.email &&
+          other.phone == this.phone);
+}
+
+class ProfilesCompanion extends UpdateCompanion<Profile> {
+  final Value<int> id;
+  final Value<String> name;
+  final Value<String> email;
+  final Value<String> phone;
+  const ProfilesCompanion({
+    this.id = const Value.absent(),
+    this.name = const Value.absent(),
+    this.email = const Value.absent(),
+    this.phone = const Value.absent(),
+  });
+  ProfilesCompanion.insert({
+    this.id = const Value.absent(),
+    required String name,
+    required String email,
+    required String phone,
+  })  : name = Value(name),
+        email = Value(email),
+        phone = Value(phone);
+  static Insertable<Profile> custom({
+    Expression<int>? id,
+    Expression<String>? name,
+    Expression<String>? email,
+    Expression<String>? phone,
+  }) {
+    return RawValuesInsertable({
+      if (id != null) 'id': id,
+      if (name != null) 'name': name,
+      if (email != null) 'email': email,
+      if (phone != null) 'phone': phone,
+    });
+  }
+
+  ProfilesCompanion copyWith(
+      {Value<int>? id,
+      Value<String>? name,
+      Value<String>? email,
+      Value<String>? phone}) {
+    return ProfilesCompanion(
+      id: id ?? this.id,
+      name: name ?? this.name,
+      email: email ?? this.email,
+      phone: phone ?? this.phone,
+    );
+  }
+
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    if (id.present) {
+      map['id'] = Variable<int>(id.value);
+    }
+    if (name.present) {
+      map['name'] = Variable<String>(name.value);
+    }
+    if (email.present) {
+      map['email'] = Variable<String>(email.value);
+    }
+    if (phone.present) {
+      map['phone'] = Variable<String>(phone.value);
+    }
+    return map;
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('ProfilesCompanion(')
+          ..write('id: $id, ')
+          ..write('name: $name, ')
+          ..write('email: $email, ')
+          ..write('phone: $phone')
+          ..write(')'))
+        .toString();
+  }
+}
+
+class $SavedCarsTable extends SavedCars
+    with TableInfo<$SavedCarsTable, SavedCar> {
+  @override
+  final GeneratedDatabase attachedDatabase;
+  final String? _alias;
+  $SavedCarsTable(this.attachedDatabase, [this._alias]);
+  static const VerificationMeta _idMeta = const VerificationMeta('id');
+  @override
+  late final GeneratedColumn<String> id = GeneratedColumn<String>(
+      'id', aliasedName, false,
+      type: DriftSqlType.string, requiredDuringInsert: true);
+  static const VerificationMeta _makeMeta = const VerificationMeta('make');
+  @override
+  late final GeneratedColumn<String> make = GeneratedColumn<String>(
+      'make', aliasedName, false,
+      type: DriftSqlType.string, requiredDuringInsert: true);
+  static const VerificationMeta _modelMeta = const VerificationMeta('model');
+  @override
+  late final GeneratedColumn<String> model = GeneratedColumn<String>(
+      'model', aliasedName, false,
+      type: DriftSqlType.string, requiredDuringInsert: true);
+  static const VerificationMeta _yearMeta = const VerificationMeta('year');
+  @override
+  late final GeneratedColumn<int> year = GeneratedColumn<int>(
+      'year', aliasedName, false,
+      type: DriftSqlType.int, requiredDuringInsert: true);
+  static const VerificationMeta _priceMeta = const VerificationMeta('price');
+  @override
+  late final GeneratedColumn<double> price = GeneratedColumn<double>(
+      'price', aliasedName, false,
+      type: DriftSqlType.double, requiredDuringInsert: true);
+  static const VerificationMeta _mileageMeta =
+      const VerificationMeta('mileage');
+  @override
+  late final GeneratedColumn<int> mileage = GeneratedColumn<int>(
+      'mileage', aliasedName, false,
+      type: DriftSqlType.int, requiredDuringInsert: true);
+  static const VerificationMeta _fuelTypeMeta =
+      const VerificationMeta('fuelType');
+  @override
+  late final GeneratedColumn<String> fuelType = GeneratedColumn<String>(
+      'fuel_type', aliasedName, false,
+      type: DriftSqlType.string, requiredDuringInsert: true);
+  static const VerificationMeta _transmissionMeta =
+      const VerificationMeta('transmission');
+  @override
+  late final GeneratedColumn<String> transmission = GeneratedColumn<String>(
+      'transmission', aliasedName, false,
+      type: DriftSqlType.string, requiredDuringInsert: true);
+  static const VerificationMeta _conditionMeta =
+      const VerificationMeta('condition');
+  @override
+  late final GeneratedColumn<String> condition = GeneratedColumn<String>(
+      'condition', aliasedName, false,
+      type: DriftSqlType.string, requiredDuringInsert: true);
+  static const VerificationMeta _colorMeta = const VerificationMeta('color');
+  @override
+  late final GeneratedColumn<String> color = GeneratedColumn<String>(
+      'color', aliasedName, false,
+      type: DriftSqlType.string, requiredDuringInsert: true);
+  static const VerificationMeta _imageUrlMeta =
+      const VerificationMeta('imageUrl');
+  @override
+  late final GeneratedColumn<String> imageUrl = GeneratedColumn<String>(
+      'image_url', aliasedName, false,
+      type: DriftSqlType.string, requiredDuringInsert: true);
+  static const VerificationMeta _descriptionMeta =
+      const VerificationMeta('description');
+  @override
+  late final GeneratedColumn<String> description = GeneratedColumn<String>(
+      'description', aliasedName, true,
+      type: DriftSqlType.string, requiredDuringInsert: false);
+  static const VerificationMeta _ratingMeta = const VerificationMeta('rating');
+  @override
+  late final GeneratedColumn<double> rating = GeneratedColumn<double>(
+      'rating', aliasedName, true,
+      type: DriftSqlType.double, requiredDuringInsert: false);
+  static const VerificationMeta _reviewCountMeta =
+      const VerificationMeta('reviewCount');
+  @override
+  late final GeneratedColumn<int> reviewCount = GeneratedColumn<int>(
+      'review_count', aliasedName, true,
+      type: DriftSqlType.int, requiredDuringInsert: false);
+  static const VerificationMeta _savedAtMeta =
+      const VerificationMeta('savedAt');
+  @override
+  late final GeneratedColumn<DateTime> savedAt = GeneratedColumn<DateTime>(
+      'saved_at', aliasedName, false,
+      type: DriftSqlType.dateTime,
+      requiredDuringInsert: false,
+      defaultValue: currentDateAndTime);
+  @override
+  List<GeneratedColumn> get $columns => [
+        id,
+        make,
+        model,
+        year,
+        price,
+        mileage,
+        fuelType,
+        transmission,
+        condition,
+        color,
+        imageUrl,
+        description,
+        rating,
+        reviewCount,
+        savedAt
+      ];
+  @override
+  String get aliasedName => _alias ?? actualTableName;
+  @override
+  String get actualTableName => $name;
+  static const String $name = 'saved_cars';
+  @override
+  VerificationContext validateIntegrity(Insertable<SavedCar> instance,
+      {bool isInserting = false}) {
+    final context = VerificationContext();
+    final data = instance.toColumns(true);
+    if (data.containsKey('id')) {
+      context.handle(_idMeta, id.isAcceptableOrUnknown(data['id']!, _idMeta));
+    } else if (isInserting) {
+      context.missing(_idMeta);
+    }
+    if (data.containsKey('make')) {
+      context.handle(
+          _makeMeta, make.isAcceptableOrUnknown(data['make']!, _makeMeta));
+    } else if (isInserting) {
+      context.missing(_makeMeta);
+    }
+    if (data.containsKey('model')) {
+      context.handle(
+          _modelMeta, model.isAcceptableOrUnknown(data['model']!, _modelMeta));
+    } else if (isInserting) {
+      context.missing(_modelMeta);
+    }
+    if (data.containsKey('year')) {
+      context.handle(
+          _yearMeta, year.isAcceptableOrUnknown(data['year']!, _yearMeta));
+    } else if (isInserting) {
+      context.missing(_yearMeta);
+    }
+    if (data.containsKey('price')) {
+      context.handle(
+          _priceMeta, price.isAcceptableOrUnknown(data['price']!, _priceMeta));
+    } else if (isInserting) {
+      context.missing(_priceMeta);
+    }
+    if (data.containsKey('mileage')) {
+      context.handle(_mileageMeta,
+          mileage.isAcceptableOrUnknown(data['mileage']!, _mileageMeta));
+    } else if (isInserting) {
+      context.missing(_mileageMeta);
+    }
+    if (data.containsKey('fuel_type')) {
+      context.handle(_fuelTypeMeta,
+          fuelType.isAcceptableOrUnknown(data['fuel_type']!, _fuelTypeMeta));
+    } else if (isInserting) {
+      context.missing(_fuelTypeMeta);
+    }
+    if (data.containsKey('transmission')) {
+      context.handle(
+          _transmissionMeta,
+          transmission.isAcceptableOrUnknown(
+              data['transmission']!, _transmissionMeta));
+    } else if (isInserting) {
+      context.missing(_transmissionMeta);
+    }
+    if (data.containsKey('condition')) {
+      context.handle(_conditionMeta,
+          condition.isAcceptableOrUnknown(data['condition']!, _conditionMeta));
+    } else if (isInserting) {
+      context.missing(_conditionMeta);
+    }
+    if (data.containsKey('color')) {
+      context.handle(
+          _colorMeta, color.isAcceptableOrUnknown(data['color']!, _colorMeta));
+    } else if (isInserting) {
+      context.missing(_colorMeta);
+    }
+    if (data.containsKey('image_url')) {
+      context.handle(_imageUrlMeta,
+          imageUrl.isAcceptableOrUnknown(data['image_url']!, _imageUrlMeta));
+    } else if (isInserting) {
+      context.missing(_imageUrlMeta);
+    }
+    if (data.containsKey('description')) {
+      context.handle(
+          _descriptionMeta,
+          description.isAcceptableOrUnknown(
+              data['description']!, _descriptionMeta));
+    }
+    if (data.containsKey('rating')) {
+      context.handle(_ratingMeta,
+          rating.isAcceptableOrUnknown(data['rating']!, _ratingMeta));
+    }
+    if (data.containsKey('review_count')) {
+      context.handle(
+          _reviewCountMeta,
+          reviewCount.isAcceptableOrUnknown(
+              data['review_count']!, _reviewCountMeta));
+    }
+    if (data.containsKey('saved_at')) {
+      context.handle(_savedAtMeta,
+          savedAt.isAcceptableOrUnknown(data['saved_at']!, _savedAtMeta));
+    }
+    return context;
+  }
+
+  @override
+  Set<GeneratedColumn> get $primaryKey => {id};
+  @override
+  SavedCar map(Map<String, dynamic> data, {String? tablePrefix}) {
+    final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
+    return SavedCar(
+      id: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}id'])!,
+      make: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}make'])!,
+      model: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}model'])!,
+      year: attachedDatabase.typeMapping
+          .read(DriftSqlType.int, data['${effectivePrefix}year'])!,
+      price: attachedDatabase.typeMapping
+          .read(DriftSqlType.double, data['${effectivePrefix}price'])!,
+      mileage: attachedDatabase.typeMapping
+          .read(DriftSqlType.int, data['${effectivePrefix}mileage'])!,
+      fuelType: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}fuel_type'])!,
+      transmission: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}transmission'])!,
+      condition: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}condition'])!,
+      color: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}color'])!,
+      imageUrl: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}image_url'])!,
+      description: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}description']),
+      rating: attachedDatabase.typeMapping
+          .read(DriftSqlType.double, data['${effectivePrefix}rating']),
+      reviewCount: attachedDatabase.typeMapping
+          .read(DriftSqlType.int, data['${effectivePrefix}review_count']),
+      savedAt: attachedDatabase.typeMapping
+          .read(DriftSqlType.dateTime, data['${effectivePrefix}saved_at'])!,
+    );
+  }
+
+  @override
+  $SavedCarsTable createAlias(String alias) {
+    return $SavedCarsTable(attachedDatabase, alias);
+  }
+}
+
+class SavedCar extends DataClass implements Insertable<SavedCar> {
+  final String id;
+  final String make;
+  final String model;
+  final int year;
+  final double price;
+  final int mileage;
+  final String fuelType;
+  final String transmission;
+  final String condition;
+  final String color;
+  final String imageUrl;
+  final String? description;
+  final double? rating;
+  final int? reviewCount;
+  final DateTime savedAt;
+  const SavedCar(
+      {required this.id,
+      required this.make,
+      required this.model,
+      required this.year,
+      required this.price,
+      required this.mileage,
+      required this.fuelType,
+      required this.transmission,
+      required this.condition,
+      required this.color,
+      required this.imageUrl,
+      this.description,
+      this.rating,
+      this.reviewCount,
+      required this.savedAt});
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    map['id'] = Variable<String>(id);
+    map['make'] = Variable<String>(make);
+    map['model'] = Variable<String>(model);
+    map['year'] = Variable<int>(year);
+    map['price'] = Variable<double>(price);
+    map['mileage'] = Variable<int>(mileage);
+    map['fuel_type'] = Variable<String>(fuelType);
+    map['transmission'] = Variable<String>(transmission);
+    map['condition'] = Variable<String>(condition);
+    map['color'] = Variable<String>(color);
+    map['image_url'] = Variable<String>(imageUrl);
+    if (!nullToAbsent || description != null) {
+      map['description'] = Variable<String>(description);
+    }
+    if (!nullToAbsent || rating != null) {
+      map['rating'] = Variable<double>(rating);
+    }
+    if (!nullToAbsent || reviewCount != null) {
+      map['review_count'] = Variable<int>(reviewCount);
+    }
+    map['saved_at'] = Variable<DateTime>(savedAt);
+    return map;
+  }
+
+  SavedCarsCompanion toCompanion(bool nullToAbsent) {
+    return SavedCarsCompanion(
+      id: Value(id),
+      make: Value(make),
+      model: Value(model),
+      year: Value(year),
+      price: Value(price),
+      mileage: Value(mileage),
+      fuelType: Value(fuelType),
+      transmission: Value(transmission),
+      condition: Value(condition),
+      color: Value(color),
+      imageUrl: Value(imageUrl),
+      description: description == null && nullToAbsent
+          ? const Value.absent()
+          : Value(description),
+      rating:
+          rating == null && nullToAbsent ? const Value.absent() : Value(rating),
+      reviewCount: reviewCount == null && nullToAbsent
+          ? const Value.absent()
+          : Value(reviewCount),
+      savedAt: Value(savedAt),
+    );
+  }
+
+  factory SavedCar.fromJson(Map<String, dynamic> json,
+      {ValueSerializer? serializer}) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return SavedCar(
+      id: serializer.fromJson<String>(json['id']),
+      make: serializer.fromJson<String>(json['make']),
+      model: serializer.fromJson<String>(json['model']),
+      year: serializer.fromJson<int>(json['year']),
+      price: serializer.fromJson<double>(json['price']),
+      mileage: serializer.fromJson<int>(json['mileage']),
+      fuelType: serializer.fromJson<String>(json['fuelType']),
+      transmission: serializer.fromJson<String>(json['transmission']),
+      condition: serializer.fromJson<String>(json['condition']),
+      color: serializer.fromJson<String>(json['color']),
+      imageUrl: serializer.fromJson<String>(json['imageUrl']),
+      description: serializer.fromJson<String?>(json['description']),
+      rating: serializer.fromJson<double?>(json['rating']),
+      reviewCount: serializer.fromJson<int?>(json['reviewCount']),
+      savedAt: serializer.fromJson<DateTime>(json['savedAt']),
+    );
+  }
+  @override
+  Map<String, dynamic> toJson({ValueSerializer? serializer}) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return <String, dynamic>{
+      'id': serializer.toJson<String>(id),
+      'make': serializer.toJson<String>(make),
+      'model': serializer.toJson<String>(model),
+      'year': serializer.toJson<int>(year),
+      'price': serializer.toJson<double>(price),
+      'mileage': serializer.toJson<int>(mileage),
+      'fuelType': serializer.toJson<String>(fuelType),
+      'transmission': serializer.toJson<String>(transmission),
+      'condition': serializer.toJson<String>(condition),
+      'color': serializer.toJson<String>(color),
+      'imageUrl': serializer.toJson<String>(imageUrl),
+      'description': serializer.toJson<String?>(description),
+      'rating': serializer.toJson<double?>(rating),
+      'reviewCount': serializer.toJson<int?>(reviewCount),
+      'savedAt': serializer.toJson<DateTime>(savedAt),
+    };
+  }
+
+  SavedCar copyWith(
+          {String? id,
+          String? make,
+          String? model,
+          int? year,
+          double? price,
+          int? mileage,
+          String? fuelType,
+          String? transmission,
+          String? condition,
+          String? color,
+          String? imageUrl,
+          Value<String?> description = const Value.absent(),
+          Value<double?> rating = const Value.absent(),
+          Value<int?> reviewCount = const Value.absent(),
+          DateTime? savedAt}) =>
+      SavedCar(
+        id: id ?? this.id,
+        make: make ?? this.make,
+        model: model ?? this.model,
+        year: year ?? this.year,
+        price: price ?? this.price,
+        mileage: mileage ?? this.mileage,
+        fuelType: fuelType ?? this.fuelType,
+        transmission: transmission ?? this.transmission,
+        condition: condition ?? this.condition,
+        color: color ?? this.color,
+        imageUrl: imageUrl ?? this.imageUrl,
+        description: description.present ? description.value : this.description,
+        rating: rating.present ? rating.value : this.rating,
+        reviewCount: reviewCount.present ? reviewCount.value : this.reviewCount,
+        savedAt: savedAt ?? this.savedAt,
+      );
+  SavedCar copyWithCompanion(SavedCarsCompanion data) {
+    return SavedCar(
+      id: data.id.present ? data.id.value : this.id,
+      make: data.make.present ? data.make.value : this.make,
+      model: data.model.present ? data.model.value : this.model,
+      year: data.year.present ? data.year.value : this.year,
+      price: data.price.present ? data.price.value : this.price,
+      mileage: data.mileage.present ? data.mileage.value : this.mileage,
+      fuelType: data.fuelType.present ? data.fuelType.value : this.fuelType,
+      transmission: data.transmission.present
+          ? data.transmission.value
+          : this.transmission,
+      condition: data.condition.present ? data.condition.value : this.condition,
+      color: data.color.present ? data.color.value : this.color,
+      imageUrl: data.imageUrl.present ? data.imageUrl.value : this.imageUrl,
+      description:
+          data.description.present ? data.description.value : this.description,
+      rating: data.rating.present ? data.rating.value : this.rating,
+      reviewCount:
+          data.reviewCount.present ? data.reviewCount.value : this.reviewCount,
+      savedAt: data.savedAt.present ? data.savedAt.value : this.savedAt,
+    );
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('SavedCar(')
+          ..write('id: $id, ')
+          ..write('make: $make, ')
+          ..write('model: $model, ')
+          ..write('year: $year, ')
+          ..write('price: $price, ')
+          ..write('mileage: $mileage, ')
+          ..write('fuelType: $fuelType, ')
+          ..write('transmission: $transmission, ')
+          ..write('condition: $condition, ')
+          ..write('color: $color, ')
+          ..write('imageUrl: $imageUrl, ')
+          ..write('description: $description, ')
+          ..write('rating: $rating, ')
+          ..write('reviewCount: $reviewCount, ')
+          ..write('savedAt: $savedAt')
+          ..write(')'))
+        .toString();
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      id,
+      make,
+      model,
+      year,
+      price,
+      mileage,
+      fuelType,
+      transmission,
+      condition,
+      color,
+      imageUrl,
+      description,
+      rating,
+      reviewCount,
+      savedAt);
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      (other is SavedCar &&
+          other.id == this.id &&
+          other.make == this.make &&
+          other.model == this.model &&
+          other.year == this.year &&
+          other.price == this.price &&
+          other.mileage == this.mileage &&
+          other.fuelType == this.fuelType &&
+          other.transmission == this.transmission &&
+          other.condition == this.condition &&
+          other.color == this.color &&
+          other.imageUrl == this.imageUrl &&
+          other.description == this.description &&
+          other.rating == this.rating &&
+          other.reviewCount == this.reviewCount &&
+          other.savedAt == this.savedAt);
+}
+
+class SavedCarsCompanion extends UpdateCompanion<SavedCar> {
+  final Value<String> id;
+  final Value<String> make;
+  final Value<String> model;
+  final Value<int> year;
+  final Value<double> price;
+  final Value<int> mileage;
+  final Value<String> fuelType;
+  final Value<String> transmission;
+  final Value<String> condition;
+  final Value<String> color;
+  final Value<String> imageUrl;
+  final Value<String?> description;
+  final Value<double?> rating;
+  final Value<int?> reviewCount;
+  final Value<DateTime> savedAt;
+  final Value<int> rowid;
+  const SavedCarsCompanion({
+    this.id = const Value.absent(),
+    this.make = const Value.absent(),
+    this.model = const Value.absent(),
+    this.year = const Value.absent(),
+    this.price = const Value.absent(),
+    this.mileage = const Value.absent(),
+    this.fuelType = const Value.absent(),
+    this.transmission = const Value.absent(),
+    this.condition = const Value.absent(),
+    this.color = const Value.absent(),
+    this.imageUrl = const Value.absent(),
+    this.description = const Value.absent(),
+    this.rating = const Value.absent(),
+    this.reviewCount = const Value.absent(),
+    this.savedAt = const Value.absent(),
+    this.rowid = const Value.absent(),
+  });
+  SavedCarsCompanion.insert({
+    required String id,
+    required String make,
+    required String model,
+    required int year,
+    required double price,
+    required int mileage,
+    required String fuelType,
+    required String transmission,
+    required String condition,
+    required String color,
+    required String imageUrl,
+    this.description = const Value.absent(),
+    this.rating = const Value.absent(),
+    this.reviewCount = const Value.absent(),
+    this.savedAt = const Value.absent(),
+    this.rowid = const Value.absent(),
+  })  : id = Value(id),
+        make = Value(make),
+        model = Value(model),
+        year = Value(year),
+        price = Value(price),
+        mileage = Value(mileage),
+        fuelType = Value(fuelType),
+        transmission = Value(transmission),
+        condition = Value(condition),
+        color = Value(color),
+        imageUrl = Value(imageUrl);
+  static Insertable<SavedCar> custom({
+    Expression<String>? id,
+    Expression<String>? make,
+    Expression<String>? model,
+    Expression<int>? year,
+    Expression<double>? price,
+    Expression<int>? mileage,
+    Expression<String>? fuelType,
+    Expression<String>? transmission,
+    Expression<String>? condition,
+    Expression<String>? color,
+    Expression<String>? imageUrl,
+    Expression<String>? description,
+    Expression<double>? rating,
+    Expression<int>? reviewCount,
+    Expression<DateTime>? savedAt,
+    Expression<int>? rowid,
+  }) {
+    return RawValuesInsertable({
+      if (id != null) 'id': id,
+      if (make != null) 'make': make,
+      if (model != null) 'model': model,
+      if (year != null) 'year': year,
+      if (price != null) 'price': price,
+      if (mileage != null) 'mileage': mileage,
+      if (fuelType != null) 'fuel_type': fuelType,
+      if (transmission != null) 'transmission': transmission,
+      if (condition != null) 'condition': condition,
+      if (color != null) 'color': color,
+      if (imageUrl != null) 'image_url': imageUrl,
+      if (description != null) 'description': description,
+      if (rating != null) 'rating': rating,
+      if (reviewCount != null) 'review_count': reviewCount,
+      if (savedAt != null) 'saved_at': savedAt,
+      if (rowid != null) 'rowid': rowid,
+    });
+  }
+
+  SavedCarsCompanion copyWith(
+      {Value<String>? id,
+      Value<String>? make,
+      Value<String>? model,
+      Value<int>? year,
+      Value<double>? price,
+      Value<int>? mileage,
+      Value<String>? fuelType,
+      Value<String>? transmission,
+      Value<String>? condition,
+      Value<String>? color,
+      Value<String>? imageUrl,
+      Value<String?>? description,
+      Value<double?>? rating,
+      Value<int?>? reviewCount,
+      Value<DateTime>? savedAt,
+      Value<int>? rowid}) {
+    return SavedCarsCompanion(
+      id: id ?? this.id,
+      make: make ?? this.make,
+      model: model ?? this.model,
+      year: year ?? this.year,
+      price: price ?? this.price,
+      mileage: mileage ?? this.mileage,
+      fuelType: fuelType ?? this.fuelType,
+      transmission: transmission ?? this.transmission,
+      condition: condition ?? this.condition,
+      color: color ?? this.color,
+      imageUrl: imageUrl ?? this.imageUrl,
+      description: description ?? this.description,
+      rating: rating ?? this.rating,
+      reviewCount: reviewCount ?? this.reviewCount,
+      savedAt: savedAt ?? this.savedAt,
+      rowid: rowid ?? this.rowid,
+    );
+  }
+
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    if (id.present) {
+      map['id'] = Variable<String>(id.value);
+    }
+    if (make.present) {
+      map['make'] = Variable<String>(make.value);
+    }
+    if (model.present) {
+      map['model'] = Variable<String>(model.value);
+    }
+    if (year.present) {
+      map['year'] = Variable<int>(year.value);
+    }
+    if (price.present) {
+      map['price'] = Variable<double>(price.value);
+    }
+    if (mileage.present) {
+      map['mileage'] = Variable<int>(mileage.value);
+    }
+    if (fuelType.present) {
+      map['fuel_type'] = Variable<String>(fuelType.value);
+    }
+    if (transmission.present) {
+      map['transmission'] = Variable<String>(transmission.value);
+    }
+    if (condition.present) {
+      map['condition'] = Variable<String>(condition.value);
+    }
+    if (color.present) {
+      map['color'] = Variable<String>(color.value);
+    }
+    if (imageUrl.present) {
+      map['image_url'] = Variable<String>(imageUrl.value);
+    }
+    if (description.present) {
+      map['description'] = Variable<String>(description.value);
+    }
+    if (rating.present) {
+      map['rating'] = Variable<double>(rating.value);
+    }
+    if (reviewCount.present) {
+      map['review_count'] = Variable<int>(reviewCount.value);
+    }
+    if (savedAt.present) {
+      map['saved_at'] = Variable<DateTime>(savedAt.value);
+    }
+    if (rowid.present) {
+      map['rowid'] = Variable<int>(rowid.value);
+    }
+    return map;
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('SavedCarsCompanion(')
+          ..write('id: $id, ')
+          ..write('make: $make, ')
+          ..write('model: $model, ')
+          ..write('year: $year, ')
+          ..write('price: $price, ')
+          ..write('mileage: $mileage, ')
+          ..write('fuelType: $fuelType, ')
+          ..write('transmission: $transmission, ')
+          ..write('condition: $condition, ')
+          ..write('color: $color, ')
+          ..write('imageUrl: $imageUrl, ')
+          ..write('description: $description, ')
+          ..write('rating: $rating, ')
+          ..write('reviewCount: $reviewCount, ')
+          ..write('savedAt: $savedAt, ')
+          ..write('rowid: $rowid')
+          ..write(')'))
+        .toString();
+  }
+}
+
+class $FavoritesTable extends Favorites
+    with TableInfo<$FavoritesTable, Favorite> {
+  @override
+  final GeneratedDatabase attachedDatabase;
+  final String? _alias;
+  $FavoritesTable(this.attachedDatabase, [this._alias]);
+  static const VerificationMeta _carIdMeta = const VerificationMeta('carId');
+  @override
+  late final GeneratedColumn<String> carId = GeneratedColumn<String>(
+      'car_id', aliasedName, false,
+      type: DriftSqlType.string, requiredDuringInsert: true);
+  static const VerificationMeta _addedAtMeta =
+      const VerificationMeta('addedAt');
+  @override
+  late final GeneratedColumn<DateTime> addedAt = GeneratedColumn<DateTime>(
+      'added_at', aliasedName, false,
+      type: DriftSqlType.dateTime,
+      requiredDuringInsert: false,
+      defaultValue: currentDateAndTime);
+  @override
+  List<GeneratedColumn> get $columns => [carId, addedAt];
+  @override
+  String get aliasedName => _alias ?? actualTableName;
+  @override
+  String get actualTableName => $name;
+  static const String $name = 'favorites';
+  @override
+  VerificationContext validateIntegrity(Insertable<Favorite> instance,
+      {bool isInserting = false}) {
+    final context = VerificationContext();
+    final data = instance.toColumns(true);
+    if (data.containsKey('car_id')) {
+      context.handle(
+          _carIdMeta, carId.isAcceptableOrUnknown(data['car_id']!, _carIdMeta));
+    } else if (isInserting) {
+      context.missing(_carIdMeta);
+    }
+    if (data.containsKey('added_at')) {
+      context.handle(_addedAtMeta,
+          addedAt.isAcceptableOrUnknown(data['added_at']!, _addedAtMeta));
+    }
+    return context;
+  }
+
+  @override
+  Set<GeneratedColumn> get $primaryKey => {carId};
+  @override
+  Favorite map(Map<String, dynamic> data, {String? tablePrefix}) {
+    final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
+    return Favorite(
+      carId: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}car_id'])!,
+      addedAt: attachedDatabase.typeMapping
+          .read(DriftSqlType.dateTime, data['${effectivePrefix}added_at'])!,
+    );
+  }
+
+  @override
+  $FavoritesTable createAlias(String alias) {
+    return $FavoritesTable(attachedDatabase, alias);
+  }
+}
+
+class Favorite extends DataClass implements Insertable<Favorite> {
+  final String carId;
+  final DateTime addedAt;
+  const Favorite({required this.carId, required this.addedAt});
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    map['car_id'] = Variable<String>(carId);
+    map['added_at'] = Variable<DateTime>(addedAt);
+    return map;
+  }
+
+  FavoritesCompanion toCompanion(bool nullToAbsent) {
+    return FavoritesCompanion(
+      carId: Value(carId),
+      addedAt: Value(addedAt),
+    );
+  }
+
+  factory Favorite.fromJson(Map<String, dynamic> json,
+      {ValueSerializer? serializer}) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return Favorite(
+      carId: serializer.fromJson<String>(json['carId']),
+      addedAt: serializer.fromJson<DateTime>(json['addedAt']),
+    );
+  }
+  @override
+  Map<String, dynamic> toJson({ValueSerializer? serializer}) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return <String, dynamic>{
+      'carId': serializer.toJson<String>(carId),
+      'addedAt': serializer.toJson<DateTime>(addedAt),
+    };
+  }
+
+  Favorite copyWith({String? carId, DateTime? addedAt}) => Favorite(
+        carId: carId ?? this.carId,
+        addedAt: addedAt ?? this.addedAt,
+      );
+  Favorite copyWithCompanion(FavoritesCompanion data) {
+    return Favorite(
+      carId: data.carId.present ? data.carId.value : this.carId,
+      addedAt: data.addedAt.present ? data.addedAt.value : this.addedAt,
+    );
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('Favorite(')
+          ..write('carId: $carId, ')
+          ..write('addedAt: $addedAt')
+          ..write(')'))
+        .toString();
+  }
+
+  @override
+  int get hashCode => Object.hash(carId, addedAt);
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      (other is Favorite &&
+          other.carId == this.carId &&
+          other.addedAt == this.addedAt);
+}
+
+class FavoritesCompanion extends UpdateCompanion<Favorite> {
+  final Value<String> carId;
+  final Value<DateTime> addedAt;
+  final Value<int> rowid;
+  const FavoritesCompanion({
+    this.carId = const Value.absent(),
+    this.addedAt = const Value.absent(),
+    this.rowid = const Value.absent(),
+  });
+  FavoritesCompanion.insert({
+    required String carId,
+    this.addedAt = const Value.absent(),
+    this.rowid = const Value.absent(),
+  }) : carId = Value(carId);
+  static Insertable<Favorite> custom({
+    Expression<String>? carId,
+    Expression<DateTime>? addedAt,
+    Expression<int>? rowid,
+  }) {
+    return RawValuesInsertable({
+      if (carId != null) 'car_id': carId,
+      if (addedAt != null) 'added_at': addedAt,
+      if (rowid != null) 'rowid': rowid,
+    });
+  }
+
+  FavoritesCompanion copyWith(
+      {Value<String>? carId, Value<DateTime>? addedAt, Value<int>? rowid}) {
+    return FavoritesCompanion(
+      carId: carId ?? this.carId,
+      addedAt: addedAt ?? this.addedAt,
+      rowid: rowid ?? this.rowid,
+    );
+  }
+
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    if (carId.present) {
+      map['car_id'] = Variable<String>(carId.value);
+    }
+    if (addedAt.present) {
+      map['added_at'] = Variable<DateTime>(addedAt.value);
+    }
+    if (rowid.present) {
+      map['rowid'] = Variable<int>(rowid.value);
+    }
+    return map;
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('FavoritesCompanion(')
+          ..write('carId: $carId, ')
+          ..write('addedAt: $addedAt, ')
+          ..write('rowid: $rowid')
+          ..write(')'))
+        .toString();
+  }
+}
+
+class $CartItemsTable extends CartItems
+    with TableInfo<$CartItemsTable, CartItem> {
+  @override
+  final GeneratedDatabase attachedDatabase;
+  final String? _alias;
+  $CartItemsTable(this.attachedDatabase, [this._alias]);
+  static const VerificationMeta _carIdMeta = const VerificationMeta('carId');
+  @override
+  late final GeneratedColumn<String> carId = GeneratedColumn<String>(
+      'car_id', aliasedName, false,
+      type: DriftSqlType.string, requiredDuringInsert: true);
+  static const VerificationMeta _quantityMeta =
+      const VerificationMeta('quantity');
+  @override
+  late final GeneratedColumn<int> quantity = GeneratedColumn<int>(
+      'quantity', aliasedName, false,
+      type: DriftSqlType.int,
+      requiredDuringInsert: false,
+      defaultValue: const Constant(1));
+  static const VerificationMeta _addedAtMeta =
+      const VerificationMeta('addedAt');
+  @override
+  late final GeneratedColumn<DateTime> addedAt = GeneratedColumn<DateTime>(
+      'added_at', aliasedName, false,
+      type: DriftSqlType.dateTime,
+      requiredDuringInsert: false,
+      defaultValue: currentDateAndTime);
+  @override
+  List<GeneratedColumn> get $columns => [carId, quantity, addedAt];
+  @override
+  String get aliasedName => _alias ?? actualTableName;
+  @override
+  String get actualTableName => $name;
+  static const String $name = 'cart_items';
+  @override
+  VerificationContext validateIntegrity(Insertable<CartItem> instance,
+      {bool isInserting = false}) {
+    final context = VerificationContext();
+    final data = instance.toColumns(true);
+    if (data.containsKey('car_id')) {
+      context.handle(
+          _carIdMeta, carId.isAcceptableOrUnknown(data['car_id']!, _carIdMeta));
+    } else if (isInserting) {
+      context.missing(_carIdMeta);
+    }
+    if (data.containsKey('quantity')) {
+      context.handle(_quantityMeta,
+          quantity.isAcceptableOrUnknown(data['quantity']!, _quantityMeta));
+    }
+    if (data.containsKey('added_at')) {
+      context.handle(_addedAtMeta,
+          addedAt.isAcceptableOrUnknown(data['added_at']!, _addedAtMeta));
+    }
+    return context;
+  }
+
+  @override
+  Set<GeneratedColumn> get $primaryKey => {carId};
+  @override
+  CartItem map(Map<String, dynamic> data, {String? tablePrefix}) {
+    final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
+    return CartItem(
+      carId: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}car_id'])!,
+      quantity: attachedDatabase.typeMapping
+          .read(DriftSqlType.int, data['${effectivePrefix}quantity'])!,
+      addedAt: attachedDatabase.typeMapping
+          .read(DriftSqlType.dateTime, data['${effectivePrefix}added_at'])!,
+    );
+  }
+
+  @override
+  $CartItemsTable createAlias(String alias) {
+    return $CartItemsTable(attachedDatabase, alias);
+  }
+}
+
+class CartItem extends DataClass implements Insertable<CartItem> {
+  final String carId;
+  final int quantity;
+  final DateTime addedAt;
+  const CartItem(
+      {required this.carId, required this.quantity, required this.addedAt});
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    map['car_id'] = Variable<String>(carId);
+    map['quantity'] = Variable<int>(quantity);
+    map['added_at'] = Variable<DateTime>(addedAt);
+    return map;
+  }
+
+  CartItemsCompanion toCompanion(bool nullToAbsent) {
+    return CartItemsCompanion(
+      carId: Value(carId),
+      quantity: Value(quantity),
+      addedAt: Value(addedAt),
+    );
+  }
+
+  factory CartItem.fromJson(Map<String, dynamic> json,
+      {ValueSerializer? serializer}) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return CartItem(
+      carId: serializer.fromJson<String>(json['carId']),
+      quantity: serializer.fromJson<int>(json['quantity']),
+      addedAt: serializer.fromJson<DateTime>(json['addedAt']),
+    );
+  }
+  @override
+  Map<String, dynamic> toJson({ValueSerializer? serializer}) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return <String, dynamic>{
+      'carId': serializer.toJson<String>(carId),
+      'quantity': serializer.toJson<int>(quantity),
+      'addedAt': serializer.toJson<DateTime>(addedAt),
+    };
+  }
+
+  CartItem copyWith({String? carId, int? quantity, DateTime? addedAt}) =>
+      CartItem(
+        carId: carId ?? this.carId,
+        quantity: quantity ?? this.quantity,
+        addedAt: addedAt ?? this.addedAt,
+      );
+  CartItem copyWithCompanion(CartItemsCompanion data) {
+    return CartItem(
+      carId: data.carId.present ? data.carId.value : this.carId,
+      quantity: data.quantity.present ? data.quantity.value : this.quantity,
+      addedAt: data.addedAt.present ? data.addedAt.value : this.addedAt,
+    );
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('CartItem(')
+          ..write('carId: $carId, ')
+          ..write('quantity: $quantity, ')
+          ..write('addedAt: $addedAt')
+          ..write(')'))
+        .toString();
+  }
+
+  @override
+  int get hashCode => Object.hash(carId, quantity, addedAt);
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      (other is CartItem &&
+          other.carId == this.carId &&
+          other.quantity == this.quantity &&
+          other.addedAt == this.addedAt);
+}
+
+class CartItemsCompanion extends UpdateCompanion<CartItem> {
+  final Value<String> carId;
+  final Value<int> quantity;
+  final Value<DateTime> addedAt;
+  final Value<int> rowid;
+  const CartItemsCompanion({
+    this.carId = const Value.absent(),
+    this.quantity = const Value.absent(),
+    this.addedAt = const Value.absent(),
+    this.rowid = const Value.absent(),
+  });
+  CartItemsCompanion.insert({
+    required String carId,
+    this.quantity = const Value.absent(),
+    this.addedAt = const Value.absent(),
+    this.rowid = const Value.absent(),
+  }) : carId = Value(carId);
+  static Insertable<CartItem> custom({
+    Expression<String>? carId,
+    Expression<int>? quantity,
+    Expression<DateTime>? addedAt,
+    Expression<int>? rowid,
+  }) {
+    return RawValuesInsertable({
+      if (carId != null) 'car_id': carId,
+      if (quantity != null) 'quantity': quantity,
+      if (addedAt != null) 'added_at': addedAt,
+      if (rowid != null) 'rowid': rowid,
+    });
+  }
+
+  CartItemsCompanion copyWith(
+      {Value<String>? carId,
+      Value<int>? quantity,
+      Value<DateTime>? addedAt,
+      Value<int>? rowid}) {
+    return CartItemsCompanion(
+      carId: carId ?? this.carId,
+      quantity: quantity ?? this.quantity,
+      addedAt: addedAt ?? this.addedAt,
+      rowid: rowid ?? this.rowid,
+    );
+  }
+
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    if (carId.present) {
+      map['car_id'] = Variable<String>(carId.value);
+    }
+    if (quantity.present) {
+      map['quantity'] = Variable<int>(quantity.value);
+    }
+    if (addedAt.present) {
+      map['added_at'] = Variable<DateTime>(addedAt.value);
+    }
+    if (rowid.present) {
+      map['rowid'] = Variable<int>(rowid.value);
+    }
+    return map;
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('CartItemsCompanion(')
+          ..write('carId: $carId, ')
+          ..write('quantity: $quantity, ')
+          ..write('addedAt: $addedAt, ')
+          ..write('rowid: $rowid')
+          ..write(')'))
+        .toString();
+  }
+}
+
+abstract class _$AppDatabase extends GeneratedDatabase {
+  _$AppDatabase(QueryExecutor e) : super(e);
+  $AppDatabaseManager get managers => $AppDatabaseManager(this);
+  late final $ProfilesTable profiles = $ProfilesTable(this);
+  late final $SavedCarsTable savedCars = $SavedCarsTable(this);
+  late final $FavoritesTable favorites = $FavoritesTable(this);
+  late final $CartItemsTable cartItems = $CartItemsTable(this);
+  @override
+  Iterable<TableInfo<Table, Object?>> get allTables =>
+      allSchemaEntities.whereType<TableInfo<Table, Object?>>();
+  @override
+  List<DatabaseSchemaEntity> get allSchemaEntities =>
+      [profiles, savedCars, favorites, cartItems];
+}
+
+typedef $$ProfilesTableCreateCompanionBuilder = ProfilesCompanion Function({
+  Value<int> id,
+  required String name,
+  required String email,
+  required String phone,
+});
+typedef $$ProfilesTableUpdateCompanionBuilder = ProfilesCompanion Function({
+  Value<int> id,
+  Value<String> name,
+  Value<String> email,
+  Value<String> phone,
+});
+
+class $$ProfilesTableTableManager extends RootTableManager<
+    _$AppDatabase,
+    $ProfilesTable,
+    Profile,
+    $$ProfilesTableFilterComposer,
+    $$ProfilesTableOrderingComposer,
+    $$ProfilesTableCreateCompanionBuilder,
+    $$ProfilesTableUpdateCompanionBuilder> {
+  $$ProfilesTableTableManager(_$AppDatabase db, $ProfilesTable table)
+      : super(TableManagerState(
+          db: db,
+          table: table,
+          filteringComposer:
+              $$ProfilesTableFilterComposer(ComposerState(db, table)),
+          orderingComposer:
+              $$ProfilesTableOrderingComposer(ComposerState(db, table)),
+          updateCompanionCallback: ({
+            Value<int> id = const Value.absent(),
+            Value<String> name = const Value.absent(),
+            Value<String> email = const Value.absent(),
+            Value<String> phone = const Value.absent(),
+          }) =>
+              ProfilesCompanion(
+            id: id,
+            name: name,
+            email: email,
+            phone: phone,
+          ),
+          createCompanionCallback: ({
+            Value<int> id = const Value.absent(),
+            required String name,
+            required String email,
+            required String phone,
+          }) =>
+              ProfilesCompanion.insert(
+            id: id,
+            name: name,
+            email: email,
+            phone: phone,
+          ),
+        ));
+}
+
+class $$ProfilesTableFilterComposer
+    extends FilterComposer<_$AppDatabase, $ProfilesTable> {
+  $$ProfilesTableFilterComposer(super.$state);
+  ColumnFilters<int> get id => $state.composableBuilder(
+      column: $state.table.id,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get name => $state.composableBuilder(
+      column: $state.table.name,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get email => $state.composableBuilder(
+      column: $state.table.email,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get phone => $state.composableBuilder(
+      column: $state.table.phone,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+}
+
+class $$ProfilesTableOrderingComposer
+    extends OrderingComposer<_$AppDatabase, $ProfilesTable> {
+  $$ProfilesTableOrderingComposer(super.$state);
+  ColumnOrderings<int> get id => $state.composableBuilder(
+      column: $state.table.id,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get name => $state.composableBuilder(
+      column: $state.table.name,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get email => $state.composableBuilder(
+      column: $state.table.email,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get phone => $state.composableBuilder(
+      column: $state.table.phone,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+}
+
+typedef $$SavedCarsTableCreateCompanionBuilder = SavedCarsCompanion Function({
+  required String id,
+  required String make,
+  required String model,
+  required int year,
+  required double price,
+  required int mileage,
+  required String fuelType,
+  required String transmission,
+  required String condition,
+  required String color,
+  required String imageUrl,
+  Value<String?> description,
+  Value<double?> rating,
+  Value<int?> reviewCount,
+  Value<DateTime> savedAt,
+  Value<int> rowid,
+});
+typedef $$SavedCarsTableUpdateCompanionBuilder = SavedCarsCompanion Function({
+  Value<String> id,
+  Value<String> make,
+  Value<String> model,
+  Value<int> year,
+  Value<double> price,
+  Value<int> mileage,
+  Value<String> fuelType,
+  Value<String> transmission,
+  Value<String> condition,
+  Value<String> color,
+  Value<String> imageUrl,
+  Value<String?> description,
+  Value<double?> rating,
+  Value<int?> reviewCount,
+  Value<DateTime> savedAt,
+  Value<int> rowid,
+});
+
+class $$SavedCarsTableTableManager extends RootTableManager<
+    _$AppDatabase,
+    $SavedCarsTable,
+    SavedCar,
+    $$SavedCarsTableFilterComposer,
+    $$SavedCarsTableOrderingComposer,
+    $$SavedCarsTableCreateCompanionBuilder,
+    $$SavedCarsTableUpdateCompanionBuilder> {
+  $$SavedCarsTableTableManager(_$AppDatabase db, $SavedCarsTable table)
+      : super(TableManagerState(
+          db: db,
+          table: table,
+          filteringComposer:
+              $$SavedCarsTableFilterComposer(ComposerState(db, table)),
+          orderingComposer:
+              $$SavedCarsTableOrderingComposer(ComposerState(db, table)),
+          updateCompanionCallback: ({
+            Value<String> id = const Value.absent(),
+            Value<String> make = const Value.absent(),
+            Value<String> model = const Value.absent(),
+            Value<int> year = const Value.absent(),
+            Value<double> price = const Value.absent(),
+            Value<int> mileage = const Value.absent(),
+            Value<String> fuelType = const Value.absent(),
+            Value<String> transmission = const Value.absent(),
+            Value<String> condition = const Value.absent(),
+            Value<String> color = const Value.absent(),
+            Value<String> imageUrl = const Value.absent(),
+            Value<String?> description = const Value.absent(),
+            Value<double?> rating = const Value.absent(),
+            Value<int?> reviewCount = const Value.absent(),
+            Value<DateTime> savedAt = const Value.absent(),
+            Value<int> rowid = const Value.absent(),
+          }) =>
+              SavedCarsCompanion(
+            id: id,
+            make: make,
+            model: model,
+            year: year,
+            price: price,
+            mileage: mileage,
+            fuelType: fuelType,
+            transmission: transmission,
+            condition: condition,
+            color: color,
+            imageUrl: imageUrl,
+            description: description,
+            rating: rating,
+            reviewCount: reviewCount,
+            savedAt: savedAt,
+            rowid: rowid,
+          ),
+          createCompanionCallback: ({
+            required String id,
+            required String make,
+            required String model,
+            required int year,
+            required double price,
+            required int mileage,
+            required String fuelType,
+            required String transmission,
+            required String condition,
+            required String color,
+            required String imageUrl,
+            Value<String?> description = const Value.absent(),
+            Value<double?> rating = const Value.absent(),
+            Value<int?> reviewCount = const Value.absent(),
+            Value<DateTime> savedAt = const Value.absent(),
+            Value<int> rowid = const Value.absent(),
+          }) =>
+              SavedCarsCompanion.insert(
+            id: id,
+            make: make,
+            model: model,
+            year: year,
+            price: price,
+            mileage: mileage,
+            fuelType: fuelType,
+            transmission: transmission,
+            condition: condition,
+            color: color,
+            imageUrl: imageUrl,
+            description: description,
+            rating: rating,
+            reviewCount: reviewCount,
+            savedAt: savedAt,
+            rowid: rowid,
+          ),
+        ));
+}
+
+class $$SavedCarsTableFilterComposer
+    extends FilterComposer<_$AppDatabase, $SavedCarsTable> {
+  $$SavedCarsTableFilterComposer(super.$state);
+  ColumnFilters<String> get id => $state.composableBuilder(
+      column: $state.table.id,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get make => $state.composableBuilder(
+      column: $state.table.make,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get model => $state.composableBuilder(
+      column: $state.table.model,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<int> get year => $state.composableBuilder(
+      column: $state.table.year,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<double> get price => $state.composableBuilder(
+      column: $state.table.price,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<int> get mileage => $state.composableBuilder(
+      column: $state.table.mileage,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get fuelType => $state.composableBuilder(
+      column: $state.table.fuelType,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get transmission => $state.composableBuilder(
+      column: $state.table.transmission,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get condition => $state.composableBuilder(
+      column: $state.table.condition,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get color => $state.composableBuilder(
+      column: $state.table.color,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get imageUrl => $state.composableBuilder(
+      column: $state.table.imageUrl,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get description => $state.composableBuilder(
+      column: $state.table.description,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<double> get rating => $state.composableBuilder(
+      column: $state.table.rating,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<int> get reviewCount => $state.composableBuilder(
+      column: $state.table.reviewCount,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<DateTime> get savedAt => $state.composableBuilder(
+      column: $state.table.savedAt,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+}
+
+class $$SavedCarsTableOrderingComposer
+    extends OrderingComposer<_$AppDatabase, $SavedCarsTable> {
+  $$SavedCarsTableOrderingComposer(super.$state);
+  ColumnOrderings<String> get id => $state.composableBuilder(
+      column: $state.table.id,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get make => $state.composableBuilder(
+      column: $state.table.make,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get model => $state.composableBuilder(
+      column: $state.table.model,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<int> get year => $state.composableBuilder(
+      column: $state.table.year,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<double> get price => $state.composableBuilder(
+      column: $state.table.price,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<int> get mileage => $state.composableBuilder(
+      column: $state.table.mileage,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get fuelType => $state.composableBuilder(
+      column: $state.table.fuelType,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get transmission => $state.composableBuilder(
+      column: $state.table.transmission,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get condition => $state.composableBuilder(
+      column: $state.table.condition,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get color => $state.composableBuilder(
+      column: $state.table.color,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get imageUrl => $state.composableBuilder(
+      column: $state.table.imageUrl,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get description => $state.composableBuilder(
+      column: $state.table.description,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<double> get rating => $state.composableBuilder(
+      column: $state.table.rating,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<int> get reviewCount => $state.composableBuilder(
+      column: $state.table.reviewCount,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<DateTime> get savedAt => $state.composableBuilder(
+      column: $state.table.savedAt,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+}
+
+typedef $$FavoritesTableCreateCompanionBuilder = FavoritesCompanion Function({
+  required String carId,
+  Value<DateTime> addedAt,
+  Value<int> rowid,
+});
+typedef $$FavoritesTableUpdateCompanionBuilder = FavoritesCompanion Function({
+  Value<String> carId,
+  Value<DateTime> addedAt,
+  Value<int> rowid,
+});
+
+class $$FavoritesTableTableManager extends RootTableManager<
+    _$AppDatabase,
+    $FavoritesTable,
+    Favorite,
+    $$FavoritesTableFilterComposer,
+    $$FavoritesTableOrderingComposer,
+    $$FavoritesTableCreateCompanionBuilder,
+    $$FavoritesTableUpdateCompanionBuilder> {
+  $$FavoritesTableTableManager(_$AppDatabase db, $FavoritesTable table)
+      : super(TableManagerState(
+          db: db,
+          table: table,
+          filteringComposer:
+              $$FavoritesTableFilterComposer(ComposerState(db, table)),
+          orderingComposer:
+              $$FavoritesTableOrderingComposer(ComposerState(db, table)),
+          updateCompanionCallback: ({
+            Value<String> carId = const Value.absent(),
+            Value<DateTime> addedAt = const Value.absent(),
+            Value<int> rowid = const Value.absent(),
+          }) =>
+              FavoritesCompanion(
+            carId: carId,
+            addedAt: addedAt,
+            rowid: rowid,
+          ),
+          createCompanionCallback: ({
+            required String carId,
+            Value<DateTime> addedAt = const Value.absent(),
+            Value<int> rowid = const Value.absent(),
+          }) =>
+              FavoritesCompanion.insert(
+            carId: carId,
+            addedAt: addedAt,
+            rowid: rowid,
+          ),
+        ));
+}
+
+class $$FavoritesTableFilterComposer
+    extends FilterComposer<_$AppDatabase, $FavoritesTable> {
+  $$FavoritesTableFilterComposer(super.$state);
+  ColumnFilters<String> get carId => $state.composableBuilder(
+      column: $state.table.carId,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<DateTime> get addedAt => $state.composableBuilder(
+      column: $state.table.addedAt,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+}
+
+class $$FavoritesTableOrderingComposer
+    extends OrderingComposer<_$AppDatabase, $FavoritesTable> {
+  $$FavoritesTableOrderingComposer(super.$state);
+  ColumnOrderings<String> get carId => $state.composableBuilder(
+      column: $state.table.carId,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<DateTime> get addedAt => $state.composableBuilder(
+      column: $state.table.addedAt,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+}
+
+typedef $$CartItemsTableCreateCompanionBuilder = CartItemsCompanion Function({
+  required String carId,
+  Value<int> quantity,
+  Value<DateTime> addedAt,
+  Value<int> rowid,
+});
+typedef $$CartItemsTableUpdateCompanionBuilder = CartItemsCompanion Function({
+  Value<String> carId,
+  Value<int> quantity,
+  Value<DateTime> addedAt,
+  Value<int> rowid,
+});
+
+class $$CartItemsTableTableManager extends RootTableManager<
+    _$AppDatabase,
+    $CartItemsTable,
+    CartItem,
+    $$CartItemsTableFilterComposer,
+    $$CartItemsTableOrderingComposer,
+    $$CartItemsTableCreateCompanionBuilder,
+    $$CartItemsTableUpdateCompanionBuilder> {
+  $$CartItemsTableTableManager(_$AppDatabase db, $CartItemsTable table)
+      : super(TableManagerState(
+          db: db,
+          table: table,
+          filteringComposer:
+              $$CartItemsTableFilterComposer(ComposerState(db, table)),
+          orderingComposer:
+              $$CartItemsTableOrderingComposer(ComposerState(db, table)),
+          updateCompanionCallback: ({
+            Value<String> carId = const Value.absent(),
+            Value<int> quantity = const Value.absent(),
+            Value<DateTime> addedAt = const Value.absent(),
+            Value<int> rowid = const Value.absent(),
+          }) =>
+              CartItemsCompanion(
+            carId: carId,
+            quantity: quantity,
+            addedAt: addedAt,
+            rowid: rowid,
+          ),
+          createCompanionCallback: ({
+            required String carId,
+            Value<int> quantity = const Value.absent(),
+            Value<DateTime> addedAt = const Value.absent(),
+            Value<int> rowid = const Value.absent(),
+          }) =>
+              CartItemsCompanion.insert(
+            carId: carId,
+            quantity: quantity,
+            addedAt: addedAt,
+            rowid: rowid,
+          ),
+        ));
+}
+
+class $$CartItemsTableFilterComposer
+    extends FilterComposer<_$AppDatabase, $CartItemsTable> {
+  $$CartItemsTableFilterComposer(super.$state);
+  ColumnFilters<String> get carId => $state.composableBuilder(
+      column: $state.table.carId,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<int> get quantity => $state.composableBuilder(
+      column: $state.table.quantity,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<DateTime> get addedAt => $state.composableBuilder(
+      column: $state.table.addedAt,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+}
+
+class $$CartItemsTableOrderingComposer
+    extends OrderingComposer<_$AppDatabase, $CartItemsTable> {
+  $$CartItemsTableOrderingComposer(super.$state);
+  ColumnOrderings<String> get carId => $state.composableBuilder(
+      column: $state.table.carId,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<int> get quantity => $state.composableBuilder(
+      column: $state.table.quantity,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<DateTime> get addedAt => $state.composableBuilder(
+      column: $state.table.addedAt,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+}
+
+class $AppDatabaseManager {
+  final _$AppDatabase _db;
+  $AppDatabaseManager(this._db);
+  $$ProfilesTableTableManager get profiles =>
+      $$ProfilesTableTableManager(_db, _db.profiles);
+  $$SavedCarsTableTableManager get savedCars =>
+      $$SavedCarsTableTableManager(_db, _db.savedCars);
+  $$FavoritesTableTableManager get favorites =>
+      $$FavoritesTableTableManager(_db, _db.favorites);
+  $$CartItemsTableTableManager get cartItems =>
+      $$CartItemsTableTableManager(_db, _db.cartItems);
+}

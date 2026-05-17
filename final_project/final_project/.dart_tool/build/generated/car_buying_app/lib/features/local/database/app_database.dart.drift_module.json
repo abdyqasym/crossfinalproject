@@ -1,0 +1,750 @@
+{
+  "elements": {
+    "AppDatabase": {
+      "id": {
+        "library_uri": "package:car_buying_app/features/local/database/app_database.dart",
+        "name": "AppDatabase"
+      },
+      "declaration": {
+        "source_uri": "package:car_buying_app/features/local/database/app_database.dart",
+        "offset": 1925,
+        "name": "AppDatabase"
+      },
+      "references": [
+        {
+          "library_uri": "package:car_buying_app/features/local/database/app_database.dart",
+          "name": "profiles"
+        },
+        {
+          "library_uri": "package:car_buying_app/features/local/database/app_database.dart",
+          "name": "saved_cars"
+        },
+        {
+          "library_uri": "package:car_buying_app/features/local/database/app_database.dart",
+          "name": "favorites"
+        },
+        {
+          "library_uri": "package:car_buying_app/features/local/database/app_database.dart",
+          "name": "cart_items"
+        }
+      ],
+      "type": "database",
+      "tables": [
+        {
+          "library_uri": "package:car_buying_app/features/local/database/app_database.dart",
+          "name": "profiles"
+        },
+        {
+          "library_uri": "package:car_buying_app/features/local/database/app_database.dart",
+          "name": "saved_cars"
+        },
+        {
+          "library_uri": "package:car_buying_app/features/local/database/app_database.dart",
+          "name": "favorites"
+        },
+        {
+          "library_uri": "package:car_buying_app/features/local/database/app_database.dart",
+          "name": "cart_items"
+        }
+      ],
+      "views": [],
+      "includes": [],
+      "queries": [],
+      "schema_version": 1,
+      "daos": []
+    },
+    "profiles": {
+      "id": {
+        "library_uri": "package:car_buying_app/features/local/database/app_database.dart",
+        "name": "profiles"
+      },
+      "declaration": {
+        "source_uri": "package:car_buying_app/features/local/database/app_database.dart",
+        "offset": 321,
+        "name": "Profiles"
+      },
+      "references": [],
+      "type": "table",
+      "columns": [
+        {
+          "sqlType": {
+            "builtin": "int"
+          },
+          "nullable": false,
+          "nameInSql": "id",
+          "nameInDart": "id",
+          "declaration": {
+            "source_uri": "package:car_buying_app/features/local/database/app_database.dart",
+            "offset": 363,
+            "name": "id"
+          },
+          "typeConverter": null,
+          "clientDefaultCode": null,
+          "defaultArgument": null,
+          "overriddenJsonName": null,
+          "referenceName": null,
+          "documentationComment": null,
+          "constraints": [
+            {
+              "type": "primary",
+              "is_auto_increment": true
+            }
+          ],
+          "customConstraints": null
+        },
+        {
+          "sqlType": {
+            "builtin": "string"
+          },
+          "nullable": false,
+          "nameInSql": "name",
+          "nameInDart": "name",
+          "declaration": {
+            "source_uri": "package:car_buying_app/features/local/database/app_database.dart",
+            "offset": 416,
+            "name": "name"
+          },
+          "typeConverter": null,
+          "clientDefaultCode": null,
+          "defaultArgument": null,
+          "overriddenJsonName": null,
+          "referenceName": null,
+          "documentationComment": null,
+          "constraints": [
+            {
+              "type": "limit_text_length",
+              "min_length": 1,
+              "max_length": 120
+            }
+          ],
+          "customConstraints": null
+        },
+        {
+          "sqlType": {
+            "builtin": "string"
+          },
+          "nullable": false,
+          "nameInSql": "email",
+          "nameInDart": "email",
+          "declaration": {
+            "source_uri": "package:car_buying_app/features/local/database/app_database.dart",
+            "offset": 481,
+            "name": "email"
+          },
+          "typeConverter": null,
+          "clientDefaultCode": null,
+          "defaultArgument": null,
+          "overriddenJsonName": null,
+          "referenceName": null,
+          "documentationComment": null,
+          "constraints": [
+            {
+              "type": "limit_text_length",
+              "min_length": 1,
+              "max_length": 120
+            }
+          ],
+          "customConstraints": null
+        },
+        {
+          "sqlType": {
+            "builtin": "string"
+          },
+          "nullable": false,
+          "nameInSql": "phone",
+          "nameInDart": "phone",
+          "declaration": {
+            "source_uri": "package:car_buying_app/features/local/database/app_database.dart",
+            "offset": 547,
+            "name": "phone"
+          },
+          "typeConverter": null,
+          "clientDefaultCode": null,
+          "defaultArgument": null,
+          "overriddenJsonName": null,
+          "referenceName": null,
+          "documentationComment": null,
+          "constraints": [
+            {
+              "type": "limit_text_length",
+              "min_length": 1,
+              "max_length": 40
+            }
+          ],
+          "customConstraints": null
+        }
+      ],
+      "existing_data_class": null,
+      "table_constraints": [],
+      "custom_parent_class": null,
+      "fixed_entity_info_name": null,
+      "base_dart_name": "Profiles",
+      "row_class_name": "Profile",
+      "companion_class_name": null,
+      "without_rowid": false,
+      "strict": false,
+      "write_default_constraints": true,
+      "custom_constraints": [],
+      "attached_indices": []
+    },
+    "saved_cars": {
+      "id": {
+        "library_uri": "package:car_buying_app/features/local/database/app_database.dart",
+        "name": "saved_cars"
+      },
+      "declaration": {
+        "source_uri": "package:car_buying_app/features/local/database/app_database.dart",
+        "offset": 606,
+        "name": "SavedCars"
+      },
+      "references": [],
+      "type": "table",
+      "columns": [
+        {
+          "sqlType": {
+            "builtin": "string"
+          },
+          "nullable": false,
+          "nameInSql": "id",
+          "nameInDart": "id",
+          "declaration": {
+            "source_uri": "package:car_buying_app/features/local/database/app_database.dart",
+            "offset": 650,
+            "name": "id"
+          },
+          "typeConverter": null,
+          "clientDefaultCode": null,
+          "defaultArgument": null,
+          "overriddenJsonName": null,
+          "referenceName": null,
+          "documentationComment": null,
+          "constraints": [],
+          "customConstraints": null
+        },
+        {
+          "sqlType": {
+            "builtin": "string"
+          },
+          "nullable": false,
+          "nameInSql": "make",
+          "nameInDart": "make",
+          "declaration": {
+            "source_uri": "package:car_buying_app/features/local/database/app_database.dart",
+            "offset": 684,
+            "name": "make"
+          },
+          "typeConverter": null,
+          "clientDefaultCode": null,
+          "defaultArgument": null,
+          "overriddenJsonName": null,
+          "referenceName": null,
+          "documentationComment": null,
+          "constraints": [],
+          "customConstraints": null
+        },
+        {
+          "sqlType": {
+            "builtin": "string"
+          },
+          "nullable": false,
+          "nameInSql": "model",
+          "nameInDart": "model",
+          "declaration": {
+            "source_uri": "package:car_buying_app/features/local/database/app_database.dart",
+            "offset": 720,
+            "name": "model"
+          },
+          "typeConverter": null,
+          "clientDefaultCode": null,
+          "defaultArgument": null,
+          "overriddenJsonName": null,
+          "referenceName": null,
+          "documentationComment": null,
+          "constraints": [],
+          "customConstraints": null
+        },
+        {
+          "sqlType": {
+            "builtin": "int"
+          },
+          "nullable": false,
+          "nameInSql": "year",
+          "nameInDart": "year",
+          "declaration": {
+            "source_uri": "package:car_buying_app/features/local/database/app_database.dart",
+            "offset": 756,
+            "name": "year"
+          },
+          "typeConverter": null,
+          "clientDefaultCode": null,
+          "defaultArgument": null,
+          "overriddenJsonName": null,
+          "referenceName": null,
+          "documentationComment": null,
+          "constraints": [],
+          "customConstraints": null
+        },
+        {
+          "sqlType": {
+            "builtin": "double"
+          },
+          "nullable": false,
+          "nameInSql": "price",
+          "nameInDart": "price",
+          "declaration": {
+            "source_uri": "package:car_buying_app/features/local/database/app_database.dart",
+            "offset": 795,
+            "name": "price"
+          },
+          "typeConverter": null,
+          "clientDefaultCode": null,
+          "defaultArgument": null,
+          "overriddenJsonName": null,
+          "referenceName": null,
+          "documentationComment": null,
+          "constraints": [],
+          "customConstraints": null
+        },
+        {
+          "sqlType": {
+            "builtin": "int"
+          },
+          "nullable": false,
+          "nameInSql": "mileage",
+          "nameInDart": "mileage",
+          "declaration": {
+            "source_uri": "package:car_buying_app/features/local/database/app_database.dart",
+            "offset": 831,
+            "name": "mileage"
+          },
+          "typeConverter": null,
+          "clientDefaultCode": null,
+          "defaultArgument": null,
+          "overriddenJsonName": null,
+          "referenceName": null,
+          "documentationComment": null,
+          "constraints": [],
+          "customConstraints": null
+        },
+        {
+          "sqlType": {
+            "builtin": "string"
+          },
+          "nullable": false,
+          "nameInSql": "fuel_type",
+          "nameInDart": "fuelType",
+          "declaration": {
+            "source_uri": "package:car_buying_app/features/local/database/app_database.dart",
+            "offset": 873,
+            "name": "fuelType"
+          },
+          "typeConverter": null,
+          "clientDefaultCode": null,
+          "defaultArgument": null,
+          "overriddenJsonName": null,
+          "referenceName": null,
+          "documentationComment": null,
+          "constraints": [],
+          "customConstraints": null
+        },
+        {
+          "sqlType": {
+            "builtin": "string"
+          },
+          "nullable": false,
+          "nameInSql": "transmission",
+          "nameInDart": "transmission",
+          "declaration": {
+            "source_uri": "package:car_buying_app/features/local/database/app_database.dart",
+            "offset": 913,
+            "name": "transmission"
+          },
+          "typeConverter": null,
+          "clientDefaultCode": null,
+          "defaultArgument": null,
+          "overriddenJsonName": null,
+          "referenceName": null,
+          "documentationComment": null,
+          "constraints": [],
+          "customConstraints": null
+        },
+        {
+          "sqlType": {
+            "builtin": "string"
+          },
+          "nullable": false,
+          "nameInSql": "condition",
+          "nameInDart": "condition",
+          "declaration": {
+            "source_uri": "package:car_buying_app/features/local/database/app_database.dart",
+            "offset": 957,
+            "name": "condition"
+          },
+          "typeConverter": null,
+          "clientDefaultCode": null,
+          "defaultArgument": null,
+          "overriddenJsonName": null,
+          "referenceName": null,
+          "documentationComment": null,
+          "constraints": [],
+          "customConstraints": null
+        },
+        {
+          "sqlType": {
+            "builtin": "string"
+          },
+          "nullable": false,
+          "nameInSql": "color",
+          "nameInDart": "color",
+          "declaration": {
+            "source_uri": "package:car_buying_app/features/local/database/app_database.dart",
+            "offset": 998,
+            "name": "color"
+          },
+          "typeConverter": null,
+          "clientDefaultCode": null,
+          "defaultArgument": null,
+          "overriddenJsonName": null,
+          "referenceName": null,
+          "documentationComment": null,
+          "constraints": [],
+          "customConstraints": null
+        },
+        {
+          "sqlType": {
+            "builtin": "string"
+          },
+          "nullable": false,
+          "nameInSql": "image_url",
+          "nameInDart": "imageUrl",
+          "declaration": {
+            "source_uri": "package:car_buying_app/features/local/database/app_database.dart",
+            "offset": 1035,
+            "name": "imageUrl"
+          },
+          "typeConverter": null,
+          "clientDefaultCode": null,
+          "defaultArgument": null,
+          "overriddenJsonName": null,
+          "referenceName": null,
+          "documentationComment": null,
+          "constraints": [],
+          "customConstraints": null
+        },
+        {
+          "sqlType": {
+            "builtin": "string"
+          },
+          "nullable": true,
+          "nameInSql": "description",
+          "nameInDart": "description",
+          "declaration": {
+            "source_uri": "package:car_buying_app/features/local/database/app_database.dart",
+            "offset": 1075,
+            "name": "description"
+          },
+          "typeConverter": null,
+          "clientDefaultCode": null,
+          "defaultArgument": null,
+          "overriddenJsonName": null,
+          "referenceName": null,
+          "documentationComment": null,
+          "constraints": [],
+          "customConstraints": null
+        },
+        {
+          "sqlType": {
+            "builtin": "double"
+          },
+          "nullable": true,
+          "nameInSql": "rating",
+          "nameInDart": "rating",
+          "declaration": {
+            "source_uri": "package:car_buying_app/features/local/database/app_database.dart",
+            "offset": 1129,
+            "name": "rating"
+          },
+          "typeConverter": null,
+          "clientDefaultCode": null,
+          "defaultArgument": null,
+          "overriddenJsonName": null,
+          "referenceName": null,
+          "documentationComment": null,
+          "constraints": [],
+          "customConstraints": null
+        },
+        {
+          "sqlType": {
+            "builtin": "int"
+          },
+          "nullable": true,
+          "nameInSql": "review_count",
+          "nameInDart": "reviewCount",
+          "declaration": {
+            "source_uri": "package:car_buying_app/features/local/database/app_database.dart",
+            "offset": 1177,
+            "name": "reviewCount"
+          },
+          "typeConverter": null,
+          "clientDefaultCode": null,
+          "defaultArgument": null,
+          "overriddenJsonName": null,
+          "referenceName": null,
+          "documentationComment": null,
+          "constraints": [],
+          "customConstraints": null
+        },
+        {
+          "sqlType": {
+            "builtin": "dateTime"
+          },
+          "nullable": false,
+          "nameInSql": "saved_at",
+          "nameInDart": "savedAt",
+          "declaration": {
+            "source_uri": "package:car_buying_app/features/local/database/app_database.dart",
+            "offset": 1238,
+            "name": "savedAt"
+          },
+          "typeConverter": null,
+          "clientDefaultCode": null,
+          "defaultArgument": {
+            "elements": [
+              {
+                "lexeme": "currentDateAndTime",
+                "import_uri": "package:drift/src/runtime/query_builder/query_builder.dart"
+              }
+            ]
+          },
+          "overriddenJsonName": null,
+          "referenceName": null,
+          "documentationComment": null,
+          "constraints": [],
+          "customConstraints": null
+        }
+      ],
+      "existing_data_class": null,
+      "table_constraints": [
+        {
+          "type": "primary_key",
+          "columns": [
+            "id"
+          ]
+        }
+      ],
+      "custom_parent_class": null,
+      "fixed_entity_info_name": null,
+      "base_dart_name": "SavedCars",
+      "row_class_name": "SavedCar",
+      "companion_class_name": null,
+      "without_rowid": false,
+      "strict": false,
+      "write_default_constraints": true,
+      "custom_constraints": [],
+      "attached_indices": []
+    },
+    "favorites": {
+      "id": {
+        "library_uri": "package:car_buying_app/features/local/database/app_database.dart",
+        "name": "favorites"
+      },
+      "declaration": {
+        "source_uri": "package:car_buying_app/features/local/database/app_database.dart",
+        "offset": 1361,
+        "name": "Favorites"
+      },
+      "references": [],
+      "type": "table",
+      "columns": [
+        {
+          "sqlType": {
+            "builtin": "string"
+          },
+          "nullable": false,
+          "nameInSql": "car_id",
+          "nameInDart": "carId",
+          "declaration": {
+            "source_uri": "package:car_buying_app/features/local/database/app_database.dart",
+            "offset": 1405,
+            "name": "carId"
+          },
+          "typeConverter": null,
+          "clientDefaultCode": null,
+          "defaultArgument": null,
+          "overriddenJsonName": null,
+          "referenceName": null,
+          "documentationComment": null,
+          "constraints": [],
+          "customConstraints": null
+        },
+        {
+          "sqlType": {
+            "builtin": "dateTime"
+          },
+          "nullable": false,
+          "nameInSql": "added_at",
+          "nameInDart": "addedAt",
+          "declaration": {
+            "source_uri": "package:car_buying_app/features/local/database/app_database.dart",
+            "offset": 1446,
+            "name": "addedAt"
+          },
+          "typeConverter": null,
+          "clientDefaultCode": null,
+          "defaultArgument": {
+            "elements": [
+              {
+                "lexeme": "currentDateAndTime",
+                "import_uri": "package:drift/src/runtime/query_builder/query_builder.dart"
+              }
+            ]
+          },
+          "overriddenJsonName": null,
+          "referenceName": null,
+          "documentationComment": null,
+          "constraints": [],
+          "customConstraints": null
+        }
+      ],
+      "existing_data_class": null,
+      "table_constraints": [
+        {
+          "type": "primary_key",
+          "columns": [
+            "car_id"
+          ]
+        }
+      ],
+      "custom_parent_class": null,
+      "fixed_entity_info_name": null,
+      "base_dart_name": "Favorites",
+      "row_class_name": "Favorite",
+      "companion_class_name": null,
+      "without_rowid": false,
+      "strict": false,
+      "write_default_constraints": true,
+      "custom_constraints": [],
+      "attached_indices": []
+    },
+    "cart_items": {
+      "id": {
+        "library_uri": "package:car_buying_app/features/local/database/app_database.dart",
+        "name": "cart_items"
+      },
+      "declaration": {
+        "source_uri": "package:car_buying_app/features/local/database/app_database.dart",
+        "offset": 1572,
+        "name": "CartItems"
+      },
+      "references": [],
+      "type": "table",
+      "columns": [
+        {
+          "sqlType": {
+            "builtin": "string"
+          },
+          "nullable": false,
+          "nameInSql": "car_id",
+          "nameInDart": "carId",
+          "declaration": {
+            "source_uri": "package:car_buying_app/features/local/database/app_database.dart",
+            "offset": 1616,
+            "name": "carId"
+          },
+          "typeConverter": null,
+          "clientDefaultCode": null,
+          "defaultArgument": null,
+          "overriddenJsonName": null,
+          "referenceName": null,
+          "documentationComment": null,
+          "constraints": [],
+          "customConstraints": null
+        },
+        {
+          "sqlType": {
+            "builtin": "int"
+          },
+          "nullable": false,
+          "nameInSql": "quantity",
+          "nameInDart": "quantity",
+          "declaration": {
+            "source_uri": "package:car_buying_app/features/local/database/app_database.dart",
+            "offset": 1652,
+            "name": "quantity"
+          },
+          "typeConverter": null,
+          "clientDefaultCode": null,
+          "defaultArgument": {
+            "elements": [
+              "const ",
+              {
+                "lexeme": "Constant",
+                "import_uri": "package:drift/src/runtime/query_builder/query_builder.dart"
+              },
+              "(1)"
+            ]
+          },
+          "overriddenJsonName": null,
+          "referenceName": null,
+          "documentationComment": null,
+          "constraints": [],
+          "customConstraints": null
+        },
+        {
+          "sqlType": {
+            "builtin": "dateTime"
+          },
+          "nullable": false,
+          "nameInSql": "added_at",
+          "nameInDart": "addedAt",
+          "declaration": {
+            "source_uri": "package:car_buying_app/features/local/database/app_database.dart",
+            "offset": 1730,
+            "name": "addedAt"
+          },
+          "typeConverter": null,
+          "clientDefaultCode": null,
+          "defaultArgument": {
+            "elements": [
+              {
+                "lexeme": "currentDateAndTime",
+                "import_uri": "package:drift/src/runtime/query_builder/query_builder.dart"
+              }
+            ]
+          },
+          "overriddenJsonName": null,
+          "referenceName": null,
+          "documentationComment": null,
+          "constraints": [],
+          "customConstraints": null
+        }
+      ],
+      "existing_data_class": null,
+      "table_constraints": [
+        {
+          "type": "primary_key",
+          "columns": [
+            "car_id"
+          ]
+        }
+      ],
+      "custom_parent_class": null,
+      "fixed_entity_info_name": null,
+      "base_dart_name": "CartItems",
+      "row_class_name": "CartItem",
+      "companion_class_name": null,
+      "without_rowid": false,
+      "strict": false,
+      "write_default_constraints": true,
+      "custom_constraints": [],
+      "attached_indices": []
+    }
+  },
+  "imports": [
+    "package:drift/drift.dart",
+    "package:car_buying_app/domain/models/car_model.dart",
+    "package:car_buying_app/domain/models/cart_item_model.dart",
+    "package:car_buying_app/features/profile/model/profile_model.dart",
+    "package:car_buying_app/features/local/database/database_connection.dart"
+  ]
+}

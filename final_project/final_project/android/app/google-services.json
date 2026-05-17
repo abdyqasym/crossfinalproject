@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "62295780076",
+    "project_id": "final-car-fa453",
+    "storage_bucket": "final-car-fa453.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:62295780076:android:83413981dddc6b5ba1d3c9",
+        "android_client_info": {
+          "package_name": "com.example.final_project"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDpy6HuJBoSJYsdg_UQ0Q_kPmUzfh1ZnBo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

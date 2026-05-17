@@ -1,0 +1,1 @@
+{"valid_import":true,"imports":[{"uri":"package:car_buying_app/features/local/database/app_database.dart","transitive":true},{"uri":"package:flutter_riverpod/flutter_riverpod.dart","transitive":false},{"uri":"package:car_buying_app/features/local/database/app_database.dart","transitive":false}],"elements":[]}
